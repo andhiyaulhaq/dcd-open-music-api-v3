@@ -1,3 +1,4 @@
 node_modules
 .env
 2023Dec31.pem
+src/api/albums/file
