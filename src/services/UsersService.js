@@ -10,9 +10,7 @@ class UsersService {
     this.pool = new Pool();
   }
 
-  async addUser({ username, password, fullname }) {
-    await this.verifyNewUsername(username);
-
+  async addUser(username, password, fullname) {
     const id = `user-${nanoid(16)}`;
     const hashedPassword = await bcrypt.hash(password, 10);
     const query = {
@@ -44,7 +42,7 @@ class UsersService {
     }
   }
 
-  async verifyUserCredential({ username, password }) {
+  async verifyUserCredential(username, password) {
     const query = {
       text: 'SELECT id, password FROM users WHERE username=$1',
       values: [username],
